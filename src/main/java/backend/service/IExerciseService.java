@@ -10,4 +10,6 @@ public interface IExerciseService {
 	
 	public Exercise create(Exercise exercise);
 	
+	public Iterable<Exercise> findAll();
+	
 }

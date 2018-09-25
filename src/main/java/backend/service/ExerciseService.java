@@ -25,5 +25,10 @@ public class ExerciseService implements IExerciseService{
 		Assert.notNull(exercise, "Exercise may not be null.");
 		return this.iExerciseDAO.save(exercise);
 	}
+	
+	@Override
+	public Iterable<Exercise> findAll(){
+		return this.iExerciseDAO.findAll();
+	}
 
 }

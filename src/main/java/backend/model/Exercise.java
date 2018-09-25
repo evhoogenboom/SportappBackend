@@ -1,11 +1,13 @@
 package backend.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Exercise {
@@ -14,15 +16,13 @@ public class Exercise {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-	private Routine routine;
+	@OneToMany
+	private List<Routine_Exercise_specifications> specifications;
 	
 	@Column
 	private String name;
 	
 	private String description;
-	
-	private int repetitions;
 	
 	//private image?? image;
 	
@@ -34,14 +34,15 @@ public class Exercise {
 		this.id = id;
 	}
 	
-	public Routine getRoutine() {
-		return routine;
+
+	public List<Routine_Exercise_specifications> getSpecifications() {
+		return specifications;
 	}
-	
-	public void setRoutine(Routine routine) {
-		this.routine = routine;
+
+	public void setSpecifications(List<Routine_Exercise_specifications> specifications) {
+		this.specifications = specifications;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -57,13 +58,6 @@ public class Exercise {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public int getRepetitions() {
-		return repetitions;
-	}
-	
-	public void setRepetitions(int repetitions) {
-		this.repetitions = repetitions;
-	}
+
 	
 }
