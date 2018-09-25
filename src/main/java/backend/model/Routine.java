@@ -1,8 +1,8 @@
 package backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +17,8 @@ public class Routine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy="routine", cascade=CascadeType.ALL)
-	private List<Exercise> exercises;
+	@OneToMany
+	private List<Routine_Exercise_specifications> specifications;
 	
 	@Column
 	private String name;
@@ -32,12 +32,12 @@ public class Routine {
 		this.id = id;
 	}
 	
-	public List<Exercise> getExercises() {
-		return exercises;
+	public List<Routine_Exercise_specifications> getSpecifications() {
+		return specifications;
 	}
 
-	public void setExercises(List<Exercise> exercises) {
-		this.exercises = exercises;
+	public void setSpecifications(List<Routine_Exercise_specifications> specifications) {
+		this.specifications = specifications;
 	}
 
 	public String getName() {

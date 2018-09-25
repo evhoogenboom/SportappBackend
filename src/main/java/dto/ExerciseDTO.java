@@ -6,9 +6,7 @@ public class ExerciseDTO {
 	
 	private String name;
 	
-	private int repetitions;
-	
-	private Long routineID;
+	private Long specificationsID;
 
 	
 	public Long getId() {
@@ -27,21 +25,13 @@ public class ExerciseDTO {
 		this.name = name;
 	}
 
-	public int getRepetitions() {
-		return repetitions;
+	public Long getSpecificationsID() {
+		return specificationsID;
 	}
 
-	public void setRepetitions(int repetitions) {
-		this.repetitions = repetitions;
+	public void setSpecificationsID(Long specificationsID) {
+		this.specificationsID = specificationsID;
 	}
 
-	public Long getRoutineID() {
-		return routineID;
-	}
 
-	public void setRoutineID(Long routineID) {
-		this.routineID = routineID;
-	}
-	
-	
 }
