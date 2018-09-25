@@ -14,6 +14,7 @@ public class Model {
 	
 	private String username;
 	
+	private String password;
 	
 	public Long getId() {
 		return id;
@@ -39,7 +40,7 @@ public class Model {
 		this.password = password;
 	}
 
-	private String password;
+	
 	
 	
 	

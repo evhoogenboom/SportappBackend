@@ -21,15 +21,16 @@ public class UserController {
 	@Autowired
 	private IService iService;
 	
-	@GetMapping("/api/user/{name}")
-	public List<Model > findByUsername(@PathVariable String name) {
+	@GetMapping("/api/login/{name}")
+	public List<Model> findByUsername(@PathVariable String name) {
+		System.out.println("in check");
 		return this.iService.findByUsername(name);
 	}
 	
-	@PostMapping ("/api/user")
+	@PostMapping("/api/user")
 	public Model create(@RequestBody Model user) {
 		return this.iService.create(user);
-	}
+	} 
 	
 	
 	
