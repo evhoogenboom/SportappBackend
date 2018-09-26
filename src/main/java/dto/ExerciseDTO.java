@@ -6,8 +6,7 @@ public class ExerciseDTO {
 	
 	private String name;
 	
-	private Long specificationsID;
-
+	private String description;
 	
 	public Long getId() {
 		return id;
@@ -25,13 +24,13 @@ public class ExerciseDTO {
 		this.name = name;
 	}
 
-	public Long getSpecificationsID() {
-		return specificationsID;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSpecificationsID(Long specificationsID) {
-		this.specificationsID = specificationsID;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-
+	
 }
