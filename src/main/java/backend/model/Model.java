@@ -1,9 +1,12 @@
 package backend.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Model {
@@ -11,6 +14,9 @@ public class Model {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@OneToMany
+	private List<Routine> routines;
 	
 	private String username;
 	
@@ -22,6 +28,14 @@ public class Model {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public List<Routine> getRoutines() {
+		return routines;
+	}
+
+	public void setRoutines(List<Routine> routines) {
+		this.routines = routines;
 	}
 
 	public String getUsername() {
@@ -39,12 +53,5 @@ public class Model {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
-	
-	
-	
-	
-	
 	
 }

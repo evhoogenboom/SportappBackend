@@ -1,6 +1,7 @@
 package backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,11 @@ public class ExerciseService implements IExerciseService{
 	@Override
 	public Iterable<Exercise> findAll(){
 		return this.iExerciseDAO.findAll();
+	}
+	
+	@Override
+	public Optional<Exercise> findById(Long id){
+		return iExerciseDAO.findById(id);
 	}
 
 }

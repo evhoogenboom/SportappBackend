@@ -16,7 +16,7 @@ public class SpecificationsService implements ISpecificationsService{
 	private ISpecificationsDAO iSpecificationsDAO;
 	
 	@Override
-	public Routine_Exercise_specifications create (Routine_Exercise_specifications specifications) {
+	public Routine_Exercise_specifications create(Routine_Exercise_specifications specifications) {
 		Assert.notNull(specifications, "Specifictions may not be null.");
 		return this.iSpecificationsDAO.save(specifications);
 	}

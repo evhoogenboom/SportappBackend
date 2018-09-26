@@ -1,5 +1,6 @@
 package backend.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,7 @@ import org.springframework.util.Assert;
 
 import backend.dao.IRoutineDAO;
 import backend.model.Routine;
+import backend.model.Routine_Exercise_specifications;
 
 @Service
 public class RoutineService implements IRoutineService {
@@ -31,4 +33,25 @@ public class RoutineService implements IRoutineService {
 	public Optional<Routine> findById(Long id){
 		return this.iRoutineDAO.findById(id);
 	}
+	
+	@Override
+	public List<Routine_Exercise_specifications> getSpecifications(Long id){
+		Optional<Routine> oRoutine = iRoutineDAO.findById(id);
+		List<Routine_Exercise_specifications> specifications = new ArrayList<Routine_Exercise_specifications>();
+		if (oRoutine.isPresent()) {
+			Routine routine = oRoutine.get();
+			specifications = routine.getSpecifications();
+		}
+		return specifications;
+	}
+	
+	@Override 
+	public void deleteRoutine(Long id) {
+		Optional<Routine> oRoutine = iRoutineDAO.findById(id);
+		if (oRoutine.isPresent()) {
+			Routine routine = oRoutine.get();
+			this.iRoutineDAO.delete(routine);
+		}
+	}
+	
 }
