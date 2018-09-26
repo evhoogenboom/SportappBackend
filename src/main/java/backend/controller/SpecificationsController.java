@@ -6,16 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import backend.model.Exercise;
-import backend.model.Routine;
 import backend.model.Routine_Exercise_specifications;
 import backend.service.IRoutineService;
 import backend.service.ISpecificationsService;
-import dto.ExerciseDTO;
 
 @RestController
 public class SpecificationsController {
@@ -37,6 +33,7 @@ public class SpecificationsController {
 	}
 	
 	/*
+	 * get, put, post, delete
 	@PutMapping("api/specifications/add")
 	public ExerciseDTO addExercise(@RequestBody ExerciseDTO exerciseDTO) {
 		
