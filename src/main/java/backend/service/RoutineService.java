@@ -19,6 +19,11 @@ public class RoutineService implements IRoutineService {
 	private IRoutineDAO iRoutineDAO;
 	
 	@Override
+	public Iterable<Routine> findAll(){
+		return this.iRoutineDAO.findAll();
+	}
+	
+	@Override
 	public List<Routine> findByName(String name){
 		return this.iRoutineDAO.findByName(name);
 	}

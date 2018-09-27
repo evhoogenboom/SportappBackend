@@ -21,6 +21,11 @@ public class RoutineController {
 	@Autowired
 	private IRoutineService iRoutineService;
 	
+	@GetMapping("api/routine/all")
+	public Iterable<Routine> findAll(){
+		return this.iRoutineService.findAll();
+	}
+	
 	@GetMapping("api/routine/{name}")
 	public List<Routine> findByName(@PathVariable String name){
 		return this.iRoutineService.findByName(name);

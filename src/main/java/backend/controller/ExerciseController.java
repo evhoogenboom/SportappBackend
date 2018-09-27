@@ -46,9 +46,9 @@ public class ExerciseController {
 	}
 	
 	//modify overschrijft alle velden behalve 'id'
-	@PutMapping("/api/exercise/modify")
-	public ExerciseDTO modify(@RequestBody ExerciseDTO DTO) {  
-		Optional<Exercise> oExercise = iExerciseService.findById(DTO.getId());
+	@PutMapping("/api/exercise/{id}/modify")
+	public ExerciseDTO modify(@PathVariable Long id, @RequestBody ExerciseDTO DTO) {  
+		Optional<Exercise> oExercise = iExerciseService.findById(id);
 		if (oExercise.isPresent()) {
 			Exercise exercise = oExercise.get();
 			exercise.setName(DTO.getName());
