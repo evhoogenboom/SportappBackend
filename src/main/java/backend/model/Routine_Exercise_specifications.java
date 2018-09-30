@@ -18,6 +18,8 @@ public class Routine_Exercise_specifications {
 	private Exercise exercise;
 		
 	@Column
+	private String name;
+	
 	private int repetitions;
 	
 	private String other;
@@ -38,6 +40,14 @@ public class Routine_Exercise_specifications {
 
 	public void setExercise(Exercise exercise) {
 		this.exercise = exercise;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getRepetitions() {
