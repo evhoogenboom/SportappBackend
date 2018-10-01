@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.model.Model;
+import backend.model.Routine;
 import backend.service.IService;
 
 @CrossOrigin
@@ -31,6 +32,10 @@ public class UserController {
 		return this.iService.create(user);
 	} 
 	
+	@GetMapping("api/user/{id}/routines")
+	public List<Routine> getRoutines(@PathVariable Long id){
+		return this.iService.getRoutines(id);
+	}
 	
 	
 	

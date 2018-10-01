@@ -8,6 +8,8 @@ import backend.model.Routine_Exercise_specifications;
 
 public interface IRoutineService {
 	
+	public Iterable<Routine> findAll();
+	
 	public List<Routine> findByName(String name);
 	
 	public Routine create(Routine routine);
