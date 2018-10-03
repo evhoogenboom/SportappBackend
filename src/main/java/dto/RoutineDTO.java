@@ -1,28 +1,17 @@
-package backend.model;
+package dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import backend.model.Routine_Exercise_specifications;
 
-@Entity
-public class Routine {
+public class RoutineDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany
 	private List<Routine_Exercise_specifications> specifications;
 	
-	@Column
 	private String name;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -30,7 +19,7 @@ public class Routine {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public List<Routine_Exercise_specifications> getSpecifications() {
 		return specifications;
 	}
@@ -46,4 +35,6 @@ public class Routine {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 }
