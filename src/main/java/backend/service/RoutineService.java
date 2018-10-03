@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import backend.dao.IRoutineDAO;
 import backend.model.Routine;
 import backend.model.Routine_Exercise_specifications;
+import backend.model.Tag;
 
 @Transactional
 @Service
@@ -52,6 +53,17 @@ public class RoutineService implements IRoutineService {
 		}
 		return specifications;
 	}
+	 
+	@Override
+	public List<Tag> getTags(Long id){
+		Optional<Routine> oRoutine = iRoutineDAO.findById(id);
+		List<Tag> tags = new ArrayList<Tag>();
+		if (oRoutine.isPresent()) {
+			Routine routine = oRoutine.get();
+			tags = routine.getTags();
+		}
+		return tags;
+	}
 	
 	@Override 
 	public void deleteRoutine(Long id) {
@@ -61,5 +73,24 @@ public class RoutineService implements IRoutineService {
 			this.iRoutineDAO.delete(routine);
 		}
 	}
+	
+	@Override
+	public Iterable<Routine> findWithTag(String tagName) {
+		ArrayList<Routine> routinesWithTag = new ArrayList<Routine>();
+		Iterable<Routine> routines = findAll();
+		ROUTINELOOP: for (Routine routine: routines) {
+			System.out.println(routine);
+			Iterable<Tag> tags = routine.getTags();
+			//Iterable<Tag> tags = getTags(routine.getId());
+			for (Tag tag: tags) {
+				if (tagName.equals(tag.getName())) {
+					routinesWithTag.add(routine);
+					continue ROUTINELOOP;
+				}
+			}
+		}
+		return routinesWithTag;
+	}
+	
 	
 }
