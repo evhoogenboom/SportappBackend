@@ -32,6 +32,7 @@ public class UserService implements IService {
 		return this.iUserDAO.save(user);
 	}
 	
+	@Override
 	public List<Routine> getRoutines(Long id){
 		Optional<Model> oModel = iUserDAO.findById(id);
 		List<Routine> routines = new ArrayList<Routine>();
@@ -42,8 +43,10 @@ public class UserService implements IService {
 		return routines;
 	}
 	
-	
-	
+	@Override
+	public Optional<Model> findById(Long id){
+		return this.iUserDAO.findById(id);
+	}
 	 
 	
 	

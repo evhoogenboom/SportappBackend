@@ -53,8 +53,11 @@ public class RoutineController {
 	}
 	
 	@DeleteMapping("api/routine/delete/{id}")
-	public void deleteRoutine(@PathVariable Long id) {
+	public Long deleteRoutine(@PathVariable Long id) {
+		System.out.println("deleted"+id);
 		this.iRoutineService.deleteRoutine(id);
+		return id;
+		
 	}
 	
 	@PutMapping("/api/routine/{id}/addSpecification")
