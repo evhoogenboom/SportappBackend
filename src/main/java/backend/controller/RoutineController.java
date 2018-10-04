@@ -71,7 +71,7 @@ public class RoutineController {
 	 
 	@DeleteMapping("api/routine/delete/{id}")
 	public Long deleteRoutine(@PathVariable Long id) {
-		System.out.println("deleted"+id);
+		System.out.println("deleted routine"+id);
 		this.iRoutineService.deleteRoutine(id);
 		return id;
 		
@@ -87,6 +87,7 @@ public class RoutineController {
 			// set specification
 			specification.setName(DTO.getName());
 			specification.setRepetitions(DTO.getRepetitions());
+			specification.setExercise(DTO.getExercise());
 			// add specification to database
 			this.iSpecificationsService.create(specification);
 			// add specification to routine
@@ -101,6 +102,16 @@ public class RoutineController {
 		return DTO;
 	}
 	
+	@PutMapping("/api/routine/{id}/changeName")
+	public String changeName(@PathVariable Long id, @RequestBody String name) {
+		Optional<Routine> oRoutine = iRoutineService.findById(id);
+		if(oRoutine.isPresent()) {
+			Routine routine = oRoutine.get();
+			routine.setName(name);
+			this.iRoutineService.create(routine);
+		}
+		return name;
+	}
 	
 	@PutMapping("/api/routine/{routineId}/addTag")
 	public TagDTO addTag(@PathVariable Long routineId, @RequestBody TagDTO dto) {  
@@ -124,5 +135,5 @@ public class RoutineController {
 		}
 		return dto;
 	}
-	 
+
 }

@@ -9,4 +9,6 @@ public interface ISpecificationsService {
 	public Routine_Exercise_specifications create(Routine_Exercise_specifications specifications);
 	
 	public Optional<Routine_Exercise_specifications> findById(Long id);
+
+	public void delete(Long id);
 }
