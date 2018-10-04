@@ -35,4 +35,8 @@ public class SpecificationsController {
 		this.iSpecificationsService.delete(id);
 		return id;
 	}
+	
+	//@GetMapping("api/specification/{id}/getExercise")
+	
+	
 }

@@ -70,6 +70,7 @@ public class RoutineController {
 			// set specification
 			specification.setName(DTO.getName());
 			specification.setRepetitions(DTO.getRepetitions());
+			specification.setExercise(DTO.getExercise());
 			// add specification to database
 			this.iSpecificationsService.create(specification);
 			// add specification to routine

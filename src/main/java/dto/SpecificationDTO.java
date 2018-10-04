@@ -1,5 +1,7 @@
 package dto;
 
+import backend.model.Exercise;
+
 public class SpecificationDTO {
 	
 	private Long id;
@@ -7,6 +9,8 @@ public class SpecificationDTO {
 	private String name;
 	
 	private int repetitions;
+	
+	private Exercise exercise;
 
 	public Long getId() {
 		return id;
@@ -30,6 +34,14 @@ public class SpecificationDTO {
 
 	public void setRepetitions(int repetitions) {
 		this.repetitions = repetitions;
+	}
+
+	public Exercise getExercise() {
+		return exercise;
+	}
+
+	public void setExercise(Exercise exercise) {
+		this.exercise = exercise;
 	}
 	
 }
