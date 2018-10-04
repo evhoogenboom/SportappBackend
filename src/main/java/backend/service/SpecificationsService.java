@@ -26,4 +26,9 @@ public class SpecificationsService implements ISpecificationsService{
 		return this.iSpecificationsDAO.findById(id);
 	}
 	
+	@Override
+	public void delete(Long id) {
+		this.iSpecificationsDAO.deleteById(id);
+	}
+	
 }

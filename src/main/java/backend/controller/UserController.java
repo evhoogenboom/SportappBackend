@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/api/user/{id}/addRoutine")
-	public RoutineDTO addSpecification(@PathVariable Long id, @RequestBody RoutineDTO DTO) {  
+	public RoutineDTO addRoutine(@PathVariable Long id, @RequestBody RoutineDTO DTO) {  
 		Optional<Model> oUser = iService.findById(id);
 		Routine routine = new Routine();
 		
