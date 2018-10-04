@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import backend.model.Routine;
 import backend.model.Routine_Exercise_specifications;
+import backend.model.Tag;
 import backend.service.IRoutineService;
 import backend.service.ISpecificationsService;
+import backend.service.ITagService;
 import dto.SpecificationDTO;
+import dto.TagDTO;
 
 @RestController
 public class RoutineController {
@@ -27,9 +30,18 @@ public class RoutineController {
 	@Autowired
 	private ISpecificationsService iSpecificationsService;
 	
+	@Autowired
+	private ITagService iTagService; 
+	
 	@GetMapping("api/routine/all")
 	public Iterable<Routine> findAll(){
 		return this.iRoutineService.findAll();
+	}
+	
+	@GetMapping("api/routine/findwithtag/{tagName}")
+	public Iterable<Routine> findWithTag(@PathVariable String tagName){
+		System.out.println("tagfunctie aangeroepen");
+		return this.iRoutineService.findWithTag(tagName);
 	}
 	
 	@GetMapping("api/routine/{name}")
@@ -47,11 +59,16 @@ public class RoutineController {
 		return this.iRoutineService.getSpecifications(id);
 	}
 	
+	@GetMapping("api/routine/{id}/tags")
+	public List<Tag> getTags(@PathVariable Long id){
+		return this.iRoutineService.getTags(id);
+	}
+	
 	@PostMapping("api/routine/new")
 	public Routine create(@RequestBody Routine routine) {
 		return this.iRoutineService.create(routine);
-	}
-	
+	} 
+	 
 	@DeleteMapping("api/routine/delete/{id}")
 	public Long deleteRoutine(@PathVariable Long id) {
 		System.out.println("deleted routine"+id);
@@ -96,4 +113,27 @@ public class RoutineController {
 		return name;
 	}
 	
+	@PutMapping("/api/routine/{routineId}/addTag")
+	public TagDTO addTag(@PathVariable Long routineId, @RequestBody TagDTO dto) {  
+		Optional<Routine> oRoutine = iRoutineService.findById(routineId);
+		Tag tag = new Tag();
+		
+		if (oRoutine.isPresent()) {
+			Routine routine = oRoutine.get();  
+			// set tag
+			tag.setName(dto.getName());
+			// add tag to database
+			this.iTagService.create(tag);
+			// add tag to routine
+			List<Tag> tags = routine.getTags();
+			tags.add(tag);
+			routine.setTags(tags);
+			// update DTO
+			dto.setId(tag.getId());
+			// update routine in database 
+			this.iRoutineService.create(routine);
+		}
+		return dto;
+	}
+
 }

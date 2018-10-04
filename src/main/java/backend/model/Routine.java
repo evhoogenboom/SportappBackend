@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,6 +20,17 @@ public class Routine {
 	@OneToMany
 	private List<Routine_Exercise_specifications> specifications;
 	
+	@ManyToMany
+	private List<Tag> tags;
+	
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
 	@Column
 	private String name;
 	
