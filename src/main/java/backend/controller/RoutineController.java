@@ -38,6 +38,11 @@ public class RoutineController {
 		return this.iRoutineService.findAll();
 	}
 	
+	@GetMapping("api/routine/findallbutuser/{id}")
+	public Iterable<Routine> findAllButUser(@PathVariable Long id) {
+		return this.iRoutineService.findAllButUser(id);
+	}
+	
 	@GetMapping("api/routine/findwithtag/{tagName}")
 	public Iterable<Routine> findWithTag(@PathVariable String tagName){
 		System.out.println("tagfunctie aangeroepen");

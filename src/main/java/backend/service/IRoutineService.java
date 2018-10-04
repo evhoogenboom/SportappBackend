@@ -25,4 +25,6 @@ public interface IRoutineService {
 	
 	public void deleteRoutine(Long id);
 	
+	public Iterable<Routine> findAllButUser(Long id);
+	
 }

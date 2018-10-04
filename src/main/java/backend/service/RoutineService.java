@@ -22,6 +22,9 @@ public class RoutineService implements IRoutineService {
 	@Autowired
 	private IRoutineDAO iRoutineDAO;
 	
+	@Autowired
+	private IService iUserService;
+	
 	@Override
 	public Iterable<Routine> findAll(){
 		return this.iRoutineDAO.findAll();
@@ -93,4 +96,19 @@ public class RoutineService implements IRoutineService {
 	}
 	
 	
+	public Iterable<Routine> findAllButUser(Long id) {
+		Iterable<Routine> all = findAll();
+		Iterable<Routine> allFromUser = iUserService.getRoutines(id);
+		List<Routine> allButUser = (List<Routine>) findAll();
+		for (Routine userRoutine : allFromUser) {
+			for (Routine routine : all) {
+				if (routine.getName().equals(userRoutine.getName())) {
+					allButUser.remove(routine);
+				}
+			}
+		}
+		return allButUser;
+	}
+	
+	 
 }
